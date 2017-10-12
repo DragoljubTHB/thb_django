@@ -16,13 +16,12 @@ class Mandelbrot(object):
         self.width = kwargs.get('width')
         self.height = kwargs.get('height')
         self.iterations = kwargs.get('iterations')
-        print(kwargs)
         # drawing area
         xa = -2.0
         xb = 1.0
         ya = -1.5
         yb = 1.5
-        maxIt = 100 #255  # max iterations allowed
+        maxIt = int(self.iterations) #255  # max iterations allowed
         # image size
         imgx = int(self.width) # 512
         imgy = int(self.height) # 512
@@ -41,33 +40,16 @@ class Mandelbrot(object):
 
         self.content = BytesIO()
         self.image.save(self.content, 'PNG')
-        # self.content.seek(0)
-        # self.image.save('/home/dado/thb/myImage2.png', "PNG")
 
     def in_bytes(self):
-        # self.content.seek(0)
         return self.content.getbuffer()
-# base64.b64encode(content.read()
-# JSONRenderer()
-# self.content.
 
 
 class MandelbrotCustomSerializer(serializers.Serializer):
 
-    # def update(self, instance, validated_data):
-    #    pass
-    # width = serializers.IntegerField()
-    # height = serializers.IntegerField()
-    # iterations = serializers.IntegerField()
-    # print(width, height, iterations, sep=' ')
-
     def create(self, validated_data):
-        print('create')
-        print(self.context)
-        # return Mandelbrot(width=validated_data['w'],height=validated_data['h'],iterations=validated_data['it']).image
-        mandel = Mandelbrot(width=100, height=100, iterations=100).in_bytes()
-        print(mandel)
-        return mandel
+        return Mandelbrot(width=600, height=100, iterations=100).in_bytes()
+
 
 class UserSerializer(serializers.ModelSerializer):
 

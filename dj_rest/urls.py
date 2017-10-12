@@ -28,7 +28,8 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
 
     # Mandelbrot/getMandelbrot?w=800&h=600&it=1000
-    url(r'^Mandelbrot/getMandelbrot', view=ImageView.as_view()),
+     url(r'^Mandelbrot/getMandelbrot', view=ImageView.as_view()),
+    # url(r'^Mandelbrot/getMandelbrot', view=ImageView2.as_view()),
     # REST-----
     #url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     url(r'^', include(router.urls)),
